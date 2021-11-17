@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  jmix-postgresql:
+    image: postgres:${POSTGRESQL_VERSION}
+    container_name: jmix-postgresql
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./jmix-postgresql-data:/var/lib/postgresql/data
+    networks:
+      - jmix-network
+
+networks:
+  jmix-network:
+    driver: bridge
+
+volumes:
+  jmix-postgresql-data:
