@@ -1,1 +1,3 @@
 rootProject.name = 'jmix-java-example'
+
+include 'service-api'

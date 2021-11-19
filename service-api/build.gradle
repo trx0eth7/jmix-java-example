@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'com.haulmont'
+version '0.0.1'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+jar {
+    into("META-INF/maven/$project.group/$project.name") {
+        from { generatePomFileForMavenJavaPublication }
+        rename ".*", "pom.xml"
+    }
+}
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11

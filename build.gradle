@@ -21,6 +21,8 @@ repositories {
 }
 
 dependencies {
+    implementation project(':service-api')
+
     implementation 'io.jmix.core:jmix-core-starter'
     implementation 'io.jmix.data:jmix-eclipselink-starter'
     implementation 'io.jmix.ui:jmix-ui-starter'
@@ -44,6 +46,9 @@ dependencies {
     // database
     //noinspection GradlePackageUpdate
     implementation("org.postgresql:postgresql")
+
+    //compatibility with old cuba
+//    implementation 'io.jmix.cuba:jmix-cuba-starter'
 }
 
 test {
